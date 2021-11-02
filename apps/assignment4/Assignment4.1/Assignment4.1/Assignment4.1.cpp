@@ -1,8 +1,18 @@
 #include<iostream>
 #include<string>
 #include<fstream>
+#include<queue>
 
 using namespace std;
+
+template<typename T>
+void print_queue(T q)
+{
+	while (!q.empty()) {
+		std::cout << q.top() << ' ';
+		q.pop();
+	}
+}
 
 int main()
 {
@@ -13,7 +23,8 @@ int main()
 	cout << "Enter '1' to display all items" << endl;
 	cout << "Enter '2' to display a selected item" << endl;
 	cout << "Enter '3' to mark a task as done" << endl;
-	cout << "Enter '4' to exit the program" << endl;
+	cout << "Enter '4' to mark a task as priority" << endl;
+	cout << "Enter '5' to exit the program" << endl;
 
 	cin >> choice;
 
@@ -34,9 +45,9 @@ int main()
 
 	case 2:
 		//Display slected item code
-		for (int lineno = 1; getline(readFile, line) && lineno < 3; lineno++)
+		for (int lineNo = 1; getline(readFile, line) && lineNo < 3; lineNo++)
 		{
-			if (lineno == 2)
+			if (lineNo == 2)
 			{
 				cout << line << endl;
 			}
@@ -48,6 +59,20 @@ int main()
 		break;
 
 	case 4:
+		priority_queue<int> q;
+
+		int const data = '!';
+
+		for (int n : data)
+			q.push(n);
+
+		print_queue(q);
+
+		for (int n : data)
+			q3.push(n);
+	}
+
+	case 5:
 		cout << "End of program" << endl;
 		return 0;
 		break;
